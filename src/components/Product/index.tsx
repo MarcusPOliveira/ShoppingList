@@ -41,18 +41,15 @@ export function Product({ data }: Props) {
         <Title done={data.done}>
           {data.description}
         </Title>
-
         <Quantity>
           Quantidade: {data.quantity}
         </Quantity>
       </Info>
-
       <Options>
         <ButtonIcon
           icon={data.done ? "undo" : "check"}
           onPress={handleDoneToggle}
         />
-
         <ButtonIcon
           icon="delete"
           color="alert"
