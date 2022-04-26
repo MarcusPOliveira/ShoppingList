@@ -1,4 +1,5 @@
 import React from 'react';
+import firestore from '@react-native-firebase/firestore';
 
 import { ButtonIcon } from '../ButtonIcon';
 import { Container, Info, Title, Quantity, Options } from './styles';
@@ -15,6 +16,25 @@ type Props = {
 }
 
 export function Product({ data }: Props) {
+
+  //Atualizando um Doc
+  function handleDoneToggle() {
+    firestore()
+      .collection('products')
+      .doc(data.id)
+      .update({
+        done: !data.done //pegando o estado atual e invertendo (de falso p/ true)
+      })
+  }
+
+  //Deletando um Doc
+  function handleDelete() {
+    firestore()
+      .collection('products')
+      .doc(data.id)
+      .delete();
+  }
+
   return (
     <Container>
       <Info>
@@ -30,11 +50,13 @@ export function Product({ data }: Props) {
       <Options>
         <ButtonIcon
           icon={data.done ? "undo" : "check"}
+          onPress={handleDoneToggle}
         />
 
         <ButtonIcon
           icon="delete"
           color="alert"
+          onPress={handleDelete}
         />
       </Options>
     </Container>
