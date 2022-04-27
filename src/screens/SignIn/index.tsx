@@ -11,17 +11,32 @@ export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  //sign in anonimo
+  //SignIn anônimo (não está em utilização)
   async function handleSignInAnonymously() {
     const { user } = await auth().signInAnonymously();
   }
 
-  //login com email e senha
+  //Logando com email e senha
+  function handleSignInWithEmailAndPassword() {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => console.log(user))
+      .catch(error => { //tratamento de exceções ao logar
+        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+          return ToastAndroid.show('Email e/ou senha inválidos!', ToastAndroid.LONG);
+        }
+        if (error.code === 'auth/user-not-found') {
+          return ToastAndroid.show('Usuário não encontrado!', ToastAndroid.LONG);
+        }
+      })
+  }
+
+  //Criação de conta com email e senha
   function handleCreateUserAccount() {
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => ToastAndroid.show('Usuário criado com sucesso!', ToastAndroid.LONG))
-      .catch(error => { //tratamento de erros ao criar conta
+      .catch(error => { //tratamento de exceções ao criar conta
         console.log(error.code);
         if (error.code === 'auth/email-already-in-use') {
           return ToastAndroid.show('Este email já está em uso! Digite outro email para cadastrar!', ToastAndroid.LONG);
@@ -38,22 +53,18 @@ export function SignIn() {
   return (
     <Container>
       <Title>MyShopping</Title>
-      <Subtitle>monte sua lista de compra te ajudar nas compras</Subtitle>
-
+      <Subtitle>monte sua lista para te ajudar nas compras!</Subtitle>
       <Input
         placeholder="e-mail"
         keyboardType="email-address"
         onChangeText={setEmail}
       />
-
       <Input
         placeholder="senha"
         secureTextEntry
         onChangeText={setPassword}
       />
-
-      <Button title="Entrar" onPress={handleSignInAnonymously} />
-
+      <Button title="Entrar" onPress={handleSignInWithEmailAndPassword} />
       <Account>
         <ButtonText title="Recuperar senha" onPress={() => { }} />
         <ButtonText title="Criar minha conta" onPress={handleCreateUserAccount} />
