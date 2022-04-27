@@ -6,7 +6,6 @@ import storage from '@react-native-firebase/storage';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Photo } from '../../components/Photo';
-
 import { Container, Content, Progress, Transferred } from './styles';
 
 export function Upload() {
@@ -44,7 +43,7 @@ export function Upload() {
     uploadTask.then(async () => {  //verificando quando o upload é finalizado
       const imageUrl = await reference.getDownloadURL();
       ToastAndroid.show('Upload concluído com sucesso!', ToastAndroid.LONG)
-    })
+    });
 
     /* //upload sem progressão de upload
       reference

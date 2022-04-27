@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { ToastAndroid } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-import { Container, Account, Title, Subtitle } from './styles';
 import { ButtonText } from '../../components/ButtonText';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { ToastAndroid } from 'react-native';
+import { Container, Account, Title, Subtitle } from './styles';
 
 export function SignIn() {
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ export function SignIn() {
         if (error.code === 'auth/user-not-found') {
           return ToastAndroid.show('Usuário não encontrado!', ToastAndroid.LONG);
         }
-      })
+      });
   }
 
   //Criação de conta com email e senha
@@ -47,7 +47,7 @@ export function SignIn() {
         if (error.code === 'auth/weak-password') {
           return ToastAndroid.show('A senha deve conter no mínimo 6 dígitos!', ToastAndroid.LONG);
         }
-      })
+      });
   }
 
   //Funcionalidade de senha esquecida

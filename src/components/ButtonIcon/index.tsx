@@ -2,8 +2,8 @@ import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { Container } from './styles';
 import theme from '../../theme';
+import { Container } from './styles';
 
 type Props = TouchableOpacityProps & {
   color?: 'success' | 'alert';

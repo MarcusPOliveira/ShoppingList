@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { FlatList, ToastAndroid } from 'react-native';
 import storage from '@react-native-firebase/storage';
 
-import { Container, PhotoInfo } from './styles';
 import { Header } from '../../components/Header';
 import { Photo } from '../../components/Photo';
 import { File, FileProps } from '../../components/File';
+import { Container, PhotoInfo } from './styles';
 
 export function Receipts() {
   const [photos, setPhotos] = useState<FileProps[]>([]);
   const [photoSelected, setPhotoSelected] = useState('');
   const [photoInfo, setPhotoInfo] = useState('');
 
-  async function fetchImages() { //listagem das imagens no Storage
+  //listagem das imagens no Storage
+  async function fetchImages() {
     storage().ref('images').list().then(result => {
       const files: FileProps[] = [];
       result.items.forEach(file => {

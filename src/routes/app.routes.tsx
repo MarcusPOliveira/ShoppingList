@@ -1,13 +1,12 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import theme from '../theme';
-
 import { Receipts } from '../screens/Receipts';
 import { Products } from '../screens/Products';
 import { Upload } from '../screens/Upload';
-import { Platform } from 'react-native';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 

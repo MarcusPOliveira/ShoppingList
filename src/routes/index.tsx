@@ -5,9 +5,6 @@ import auth from '@react-native-firebase/auth';
 import { AppRoutes } from './app.routes';
 import { SignIn } from '../screens/SignIn';
 
-// Se o usuário estiver logado, exibir AppRoutes
-// Se o usuário não estiver, exibir apenas o SignIn
-
 type User = {
   uid: string;
 }
@@ -15,6 +12,8 @@ type User = {
 export function Routes() {
   const [user, setUser] = useState<User | null>(null);
 
+  // Se o usuário estiver logado, exibir AppRoutes
+  // Se o usuário não estiver, exibir apenas o SignIn
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(userInfo => {
       console.log(user);

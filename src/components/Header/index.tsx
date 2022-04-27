@@ -22,7 +22,6 @@ export function Header({ title, showLogoutButton = false }: Props) {
       <Title>
         {title}
       </Title>
-
       {
         showLogoutButton &&
         <ButtonIcon

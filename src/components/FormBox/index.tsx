@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { ToastAndroid } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import { Container } from './styles';
 import { ButtonIcon } from '../ButtonIcon';
 import { Input } from '../Input';
+import { Container } from './styles';
 
 export function FormBox() {
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(0);
 
+  //Adicionando produto
   async function handleProductAdd() {
     firestore()
       .collection('products')
