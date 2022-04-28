@@ -1,10 +1,11 @@
-<a>My ShoppingList App</a>
+## My ShoppingList App <h2>
 
 Um simples app de lista de compras, desenvolvido com React Native.
 
 ## 📖 Objetivo
 
 Aprender e praticar funcionalidades do Firebase, como:
+
 Authentication
 - Criação e Autenticação de contas com Email e Senha
 - Login Anônimo
