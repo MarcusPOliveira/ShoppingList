@@ -1,4 +1,4 @@
-## My ShoppingList App <h2>
+# My ShoppingList App <h2>
 
 Um simples app de lista de compras, desenvolvido com React Native.
 
